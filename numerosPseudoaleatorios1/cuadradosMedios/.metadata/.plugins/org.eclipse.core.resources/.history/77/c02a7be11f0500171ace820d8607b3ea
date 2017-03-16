@@ -1,0 +1,12 @@
+package test;
+
+import logic.CuadradosMedios;
+
+public class TextCuadradosMedio {
+
+	public static void main(String[] args) {
+		CuadradosMedios cuadradosMedios = new CuadradosMedios(1234, 4, true);
+		cuadradosMedios.calcularSemila();
+	}
+	
+}

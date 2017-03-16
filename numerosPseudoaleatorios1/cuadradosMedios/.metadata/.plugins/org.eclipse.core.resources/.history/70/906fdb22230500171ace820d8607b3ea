@@ -1,0 +1,22 @@
+package test;
+
+import javax.swing.JOptionPane;
+
+import logic.CuadradosMedios2;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		CuadradosMedios2 cuadradosMedios = new CuadradosMedios2(Integer.valueOf(JOptionPane.showInputDialog("Semilla: ")), Integer.valueOf(JOptionPane.showInputDialog("Nùmero de dìgitos a tomar: ")));
+		double value;
+		int i=0;
+		do{
+			i++;
+			value = cuadradosMedios.calcularSemila();
+			System.out.println(i+" - "+value);
+		} while(value>0);
+			
+	}
+
+}

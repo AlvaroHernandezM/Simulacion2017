@@ -1,0 +1,31 @@
+package test;
+
+import javax.swing.JOptionPane;
+
+import logic.CuadradosMedios2;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		CuadradosMedios2 cuadradosMedios = new CuadradosMedios2(Integer.valueOf(JOptionPane.showInputDialog("Semilla: ")), Integer.valueOf(JOptionPane.showInputDialog("Nùmero de dìgitos a tomar: ")));
+		double value;
+		int i=0;
+		do{
+			i++;
+			value = cuadradosMedios.calcularSemila();
+			System.out.println("Resultado "+i+" = "+value+" - Semilla: "+cuadradosMedios.getSemilla());
+		} while(value>0);
+		System.out.println("***************************************");
+		System.out.println("Promedio: "+cuadradosMedios.promedio(cuadradosMedios.getHistorial()));
+		System.out.println("***************************************");
+		System.out.println("Varianza: "+cuadradosMedios.varianza(cuadradosMedios.getHistorial()));
+		System.out.println("***************************************");		
+		int histo[] = cuadradosMedios.histograma(cuadradosMedios.getHistorial(), Integer.valueOf(JOptionPane.showInputDialog("Rango histograma: ";)))
+	       for (int i = 0; i < histo.length; i++) {
+				System.out.println((double)i/(double)50 + " a " + (double)(i+1)/(double)50 + ": "+histo[i]);
+	        }
+	    Pintar pintar = new Pintar(histo); 
+	}
+
+}

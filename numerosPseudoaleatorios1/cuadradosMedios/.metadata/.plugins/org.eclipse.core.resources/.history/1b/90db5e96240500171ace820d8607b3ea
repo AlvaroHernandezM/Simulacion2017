@@ -1,0 +1,90 @@
+package logic;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * @author USER
+ *
+ */
+public class CuadradosMedios2 {
+	
+	int semilla, numAleatorio;
+	ArrayList<Double> historial;
+	
+	public CuadradosMedios2(int semilla, int numAleatorio) {
+		super();
+		this.semilla = semilla;
+		this.numAleatorio = numAleatorio;
+		this.historial = new ArrayList<>();
+
+		//this.historial.add(this.semilla);
+	}
+	
+	public boolean validate(int number){
+		if(this.historial.contains(number)){
+			return false;					
+		} else {
+			this.historial.add((double)number);
+			return true;	
+		}
+	}
+	
+	public double calcularSemila(){
+		
+		this.semilla = this.semilla * this.semilla;
+		System.out.println(semilla);
+		int numDigitos = this.contarDigitos(semilla);
+		//this.imprimirSecuencia();
+		this.semilla = (int) (this.semilla / Math.pow(10,(numDigitos-this.numAleatorio)/2)) %
+				(int) Math.pow(10,this.numAleatorio);
+		if(this.validate((int)this.semilla)){
+			return (double) this.semilla / Math.pow(10,this.numAleatorio);			
+		} else {
+			return 0;
+		}
+	}
+		
+	private int contarDigitos(int valor){
+		int numD = 1;
+		while(valor > 10 ){
+			valor /= 10;
+			numD++;
+		}
+		return numD;
+	}
+	
+	public double promedio(ArrayList<Double> lista) {
+		double acum = 0;
+		for (Iterator<Double> it = lista.iterator(); it.hasNext();) {
+			acum += it.next();
+		}
+
+		return acum / (double) lista.size();
+	}
+
+	public double varianza(ArrayList<Double> lista) {
+		double sumatoria = 0;
+
+		double prom = promedio(lista);
+
+		for (Iterator<Double> it = lista.iterator(); it.hasNext();) {
+			Double d = it.next();
+			sumatoria += Math.pow(d * prom, 2);
+		}
+
+		double varianza = (sumatoria / (double) lista.size());
+		return varianza;
+	}
+	public int getSemilla() {
+		return semilla;
+	}
+
+	public ArrayList<Double> getHistorial() {
+		return historial;
+	}
+
+	
+
+	
+}

@@ -1,0 +1,30 @@
+package test;
+
+import javax.swing.JOptionPane;
+
+import logic.ConcruencialMixto;
+
+public class TestConcruencial {
+
+	public static void main(String[] args) {
+		int semilla = Integer.valueOf(JOptionPane.showInputDialog("SEMILLA:"));
+		int modulo = Integer.valueOf(JOptionPane.showInputDialog("MODULO: (m):"));
+		int multiplicador= Integer.valueOf(JOptionPane.showInputDialog("MULTIPLICADOR (a):"));
+		int acondicionador = Integer.valueOf(JOptionPane.showInputDialog("ADICIONADOR (c):"));
+		ConcruencialMixto concruencialMixto = new ConcruencialMixto(semilla, multiplicador, acondicionador, modulo);
+		//ConcruencialMixto concruencialMixto = new ConcruencialMixto(34982, 342, 5423, 76392);
+		double value;
+		int i=0;
+		do{
+			i++;
+			value = concruencialMixto.calcular();
+			if(value != -1){
+				System.out.println("Resultado: "+i+" - "+value+" - Semilla: "+concruencialMixto.getSemilla());
+			} else {
+				System.out.println("Resultado "+i+" esta repetido");
+			}
+		} while(value!=-1);
+		System.out.println("Promedio: "+concruencialMixto.promedio(concruencialMixto.getSecuencia()));
+		System.out.println("Varianza: "+);
+	}
+}

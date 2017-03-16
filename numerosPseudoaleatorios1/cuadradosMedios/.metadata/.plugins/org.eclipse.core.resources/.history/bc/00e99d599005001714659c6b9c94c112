@@ -1,0 +1,43 @@
+package presentation;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+public class Pintar extends JFrame{
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	int histo[];
+    public Pintar() {
+        
+    }
+
+    public Pintar(int[] histo) {
+        this.histo = histo;
+        setSize(500, 500);
+        setTitle("HISTOGRAMA DE FRECUENCIAS.");
+        setVisible(true);
+    }
+
+    
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        double totales = 0;
+        g.setColor(Color.GRAY);
+        for (int i = 0; i < histo.length; i++) {
+            totales+=histo[i];
+        }
+        for (int i = 0; i < histo.length; i++) {
+            g.drawString((double)i/(double)histo.length + " a " + (double)(i+1)/(double)histo.length , 0, i*30 +10);
+            g.fillRect(100, i*30,(int)(((double)getWidth()/totales)*histo[i]), 10);
+            g.drawString(histo[i]+"", 120+(int)(((double)getWidth()/totales)*histo[i]), i*30 +10);
+        }
+    }
+    
+    
+}

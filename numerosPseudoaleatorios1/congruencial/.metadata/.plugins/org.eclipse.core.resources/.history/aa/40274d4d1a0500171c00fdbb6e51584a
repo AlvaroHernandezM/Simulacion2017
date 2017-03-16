@@ -1,0 +1,77 @@
+package logic;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ConcruencialMixto {
+	
+	private int semilla, a, c, m, subT, residuo;
+	private ArrayList<Double> secuencia;
+	
+	public ConcruencialMixto(int semilla, int a, int c, int m) {
+		super();
+		this.semilla = semilla;
+		this.a = a;
+		this.c = c;
+		this.m = m;
+		this.secuencia = new ArrayList<>();
+		this.secuencia.add( (double)( ((this.a * this.semilla) + this.c) % this.m ));
+	}
+	
+	private boolean validate(double number){
+		if(this.secuencia.contains(number)){
+			//System.out.println("contains: "+number+" - **: "+(double) this.residuo/(this.m - 1));
+			return false;
+		} else {
+			this.secuencia.add(number);
+			return true;
+		}
+	}
+	
+	public double calcular(){
+		this.subT = (this.a * this.semilla) + this.c;
+		this.residuo = this.subT % this.m;
+		this.semilla = this.residuo;
+		//System.out.println("semilla: "+this.semilla);
+		if(this.validate((double) this.residuo/(this.m - 1))){
+			return (double) this.residuo/(this.m - 1);			
+		} else {
+			return -1;
+		}
+	}
+
+	
+	
+	public int getSemilla() {
+		return semilla;
+	}
+
+	public double promedio(ArrayList<Double> lista) {
+		double acum = 0;
+		for (Iterator<Double> it = lista.iterator(); it.hasNext();) {
+			acum += it.next();
+		}
+
+		return acum / (double) lista.size();
+	}
+
+	public double varianza(ArrayList<Double> lista) {
+		double sumatoria = 0;
+
+		double prom = promedio(lista);
+
+		for (Iterator<Double> it = lista.iterator(); it.hasNext();) {
+			Double d = it.next();
+			sumatoria += Math.pow(d * prom, 2);
+		}
+
+		double varianza = (sumatoria / (double) lista.size());
+		return varianza;
+	}
+
+	public ArrayList<Double> getSecuencia() {
+		return secuencia;
+	}
+	
+	
+}

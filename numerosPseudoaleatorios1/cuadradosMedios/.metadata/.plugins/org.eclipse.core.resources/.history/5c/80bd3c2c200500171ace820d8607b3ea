@@ -1,0 +1,20 @@
+package test;
+
+import logic.CuadradosMedios2;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		CuadradosMedios2 cuadradosMedios = new CuadradosMedios2(727, 4);
+		double value;
+		int i=0;
+		do{
+			i++;
+			value = cuadradosMedios.calcularSemila();
+			System.out.print(" - "+i+" - "+value);
+		} while(value>0);
+			
+	}
+
+}
